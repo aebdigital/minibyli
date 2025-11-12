@@ -56,9 +56,6 @@
     border: none;
 }
 
-.recipe-item:hover {
-    transform: translateY(-5px);
-}
 
 .recipe-item img {
     width: 100%;
