@@ -1,0 +1,19 @@
+/* Main styles file - imports modular CSS files */
+
+/* Base styles (fonts, colors, common elements) */
+@import 'styles/base.css';
+
+/* Component styles */
+@import 'styles/header.css';
+@import 'styles/footer.css';
+@import 'styles/modal.css';
+@import 'styles/social-feeds.css';
+@import 'styles/recipes.css';
+
+/* Page-specific styles */
+@import 'styles/home.css';
+@import 'styles/products.css';
+@import 'styles/contact.css';
+@import 'styles/about.css';
+@import 'styles/blog.css';
+

@@ -1,0 +1,130 @@
+/* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+header.scrolled {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #8FBC8F;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #D4AF37;
+}
+
+.main-nav {
+    background-color: transparent;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1.1rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+header.scrolled .nav-links a {
+    color: #333;
+}
+
+.nav-links a:hover {
+    color: #D4AF37;
+}
+
+header.scrolled .nav-links a:hover {
+    color: #8FBC8F;
+}
+
+.nav-links a.active {
+    color: #D4AF37;
+}
+
+header.scrolled .nav-links a.active {
+    color: #8FBC8F;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #D4AF37;
+    transition: background-color 0.3s ease;
+}
+
+header.scrolled .nav-links a.active::after {
+    background-color: #8FBC8F;
+}
+
+.logo {
+    height: 80px;
+    transition: all 0.3s ease;
+}
+
+.logo-white {
+    filter: brightness(0) invert(1);
+}
+
+.logo-normal {
+    filter: none;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .nav-links {
+        gap: 20px;
+    }
+}

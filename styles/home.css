@@ -1,0 +1,176 @@
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../hero.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: left;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+/* About Section */
+.about {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.about p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #666;
+    text-align: justify;
+}
+
+/* Microgreens Info Section */
+.microgreens-info {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.microgreens-info h2 {
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.microgreens-info p {
+    font-size: 1.1rem;
+    color: #666;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* Products Grid */
+.products-grid {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: visible;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    height: 200px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.product-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+.product-card-link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+.product-card h3 {
+    padding: 20px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin: 0;
+}
+
+.product-btn {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8FBC8F;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    opacity: 0;
+}
+
+.product-card:hover .product-btn {
+    transform: translateX(-50%) translateY(10px);
+    opacity: 1;
+}
+
+.product-btn:hover {
+    background-color: #7BA77B;
+    color: white;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
