@@ -271,7 +271,7 @@ class SocialFeedSection {
               <div class="fb-page" 
                    data-href="https://www.facebook.com/minibyli" 
                    data-tabs="timeline" 
-                   data-width="" 
+                   data-width="500" 
                    data-height="600" 
                    data-small-header="false" 
                    data-adapt-container-width="true" 

@@ -58,13 +58,35 @@
     overflow: hidden;
 }
 
-.fb-page {
+.fb-page,
+.fb-page span,
+.fb-page iframe {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     width: 100% !important;
     max-width: 100% !important;
     height: 600px !important;
+    min-width: 100% !important;
+}
+
+/* Force Facebook embed to be full width */
+.facebook-feed .feed-embed span[style],
+.facebook-feed .feed-embed iframe[style] {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+}
+
+/* Override any Facebook inline width styles */
+.facebook-feed span[style*="width"],
+.facebook-feed iframe[style*="width"] {
+    width: 100% !important;
+}
+
+/* Ensure container takes full width */
+.facebook-feed .feed-embed {
+    width: 100% !important;
 }
 
 .instagram-media {
