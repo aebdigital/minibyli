@@ -102,8 +102,9 @@
     min-width: 100% !important;
 }
 
-/* Force all nested elements to inherit full width */
-.facebook-feed * {
+/* Target specific Facebook wrapper elements */
+.facebook-feed .fb-page > span,
+.facebook-feed .fb-page > div {
     max-width: 100% !important;
 }
 
