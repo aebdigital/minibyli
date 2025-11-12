@@ -84,6 +84,29 @@
     width: 100% !important;
 }
 
+/* Target specific Facebook classes */
+.facebook-feed ._2p3a,
+.facebook-feed .uiScaledImageContainer,
+.facebook-feed ._4u0w,
+.facebook-feed ._50f7 {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+}
+
+/* Override all Facebook div styles containing width */
+.facebook-feed div[style*="width: 500px"],
+.facebook-feed div[style*="min-width: 180px"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 100% !important;
+}
+
+/* Force all nested elements to inherit full width */
+.facebook-feed * {
+    max-width: 100% !important;
+}
+
 /* Ensure container takes full width */
 .facebook-feed .feed-embed {
     width: 100% !important;

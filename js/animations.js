@@ -70,7 +70,6 @@ function initializeAnimations() {
     if (document.querySelectorAll('.product-card').length > 0) {
         gsap.from('.product-card', {
             opacity: 0,
-            y: 80,
             duration: 0.8,
             stagger: 0.2,
             ease: 'power2.out',
