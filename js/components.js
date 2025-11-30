@@ -39,10 +39,13 @@ class Header {
               <a href="https://www.instagram.com/minibyli" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             </div>
           </div>
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+          </button>
           <div class="nav-links">
             <a href="${pathPrefix}index.html">Domov</a>
             <a href="${subpagePrefix}about.html">Kto sme</a>
-            <a href="${subpagePrefix}produkty/minihrasok.html">Produkty</a>
+            <a href="${subpagePrefix}produkty/product-template.html?product=minihrasok">Produkty</a>
             <a href="${subpagePrefix}blog.html">Blog</a>
             <a href="${subpagePrefix}kontakt.html">Kontakt</a>
           </div>
@@ -87,7 +90,7 @@ class Footer {
         <!-- CTA Section -->
         <div class="footer-cta">
           <h2>Zaujímajú vás naše microgreens?</h2>
-          <a href="${subpagePrefix}kontakt.html" class="cta-footer-btn">Kontaktujte nás</a>
+          <a href="${subpagePrefix}kontakt.html" class="cta-footer-btn">KONTAKTUJTE NÁS</a>
         </div>
         
         <!-- Main Footer Content -->
@@ -120,7 +123,7 @@ class Footer {
             <div class="footer-nav">
               <a href="${pathPrefix}index.html">Domov</a>
               <a href="${subpagePrefix}about.html">Kto sme</a>
-              <a href="${subpagePrefix}produkty/minihrasok.html">Produkty</a>
+              <a href="${subpagePrefix}produkty/product-template.html?product=minihrasok">Produkty</a>
               <a href="${subpagePrefix}blog.html">Blog</a>
               <a href="${subpagePrefix}kontakt.html">Kontakt</a>
             </div>
@@ -183,6 +186,9 @@ function initializeComponents() {
     
     // Set active nav link
     setActiveNavLink();
+    
+    // Initialize mobile menu
+    initializeMobileMenu();
   }
   
   if (footerContainer) {
@@ -250,6 +256,42 @@ function setActiveNavLink() {
   });
 }
 
+function initializeMobileMenu() {
+  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const menuIcon = mobileMenuToggle?.querySelector('i');
+  
+  if (!mobileMenuToggle || !navLinks) return;
+  
+  mobileMenuToggle.addEventListener('click', () => {
+    const isActive = navLinks.classList.contains('active');
+    
+    if (isActive) {
+      navLinks.classList.remove('active');
+      menuIcon.className = 'fas fa-bars';
+    } else {
+      navLinks.classList.add('active');
+      menuIcon.className = 'fas fa-times';
+    }
+  });
+  
+  // Close menu when clicking on a link
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      menuIcon.className = 'fas fa-bars';
+    });
+  });
+  
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+      navLinks.classList.remove('active');
+      menuIcon.className = 'fas fa-bars';
+    }
+  });
+}
+
 class SocialFeedSection {
   constructor() {
     this.render();
@@ -268,18 +310,22 @@ class SocialFeedSection {
           <div class="social-feed facebook-feed">
             <h3><i class="fab fa-facebook"></i> Facebook</h3>
             <div class="feed-embed">
-              <div class="fb-page" 
-                   data-href="https://www.facebook.com/minibyli" 
-                   data-tabs="timeline" 
-                   data-width="500" 
-                   data-height="600" 
-                   data-small-header="false" 
-                   data-adapt-container-width="true" 
-                   data-hide-cover="false" 
-                   data-show-facepile="true">
-                <blockquote cite="https://www.facebook.com/minibyli" class="fb-xfbml-parse-ignore">
-                  <a href="https://www.facebook.com/minibyli">MiniBýli</a>
-                </blockquote>
+              <div class="facebook-fallback">
+                <div class="facebook-header">
+                  <img src="https://scontent.xx.fbcdn.net/v/t39.30808-1/307513196_484663480338833_8376859459327943214_n.jpg" alt="MiniBýli" class="fb-avatar">
+                  <div>
+                    <h4>MiniBýli</h4>
+                    <p>342 sledovatelia</p>
+                  </div>
+                  <a href="https://www.facebook.com/minibyli" target="_blank" class="follow-btn">
+                    <i class="fab fa-facebook"></i> Sledovať
+                  </a>
+                </div>
+                <div class="facebook-cta">
+                  <a href="https://www.facebook.com/minibyli" target="_blank" class="view-facebook-btn">
+                    Zobraziť na Facebooku
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -401,28 +447,29 @@ class RecipeSection {
 class ProductSidebar {
   constructor() {
     this.products = [
-      { name: "Minihrášok", filename: "minihrasok.html", image: "minihrasok (1).jpg" },
-      { name: "Minislnečnica", filename: "minislnecnica.html", image: "minislnecnica (1).jpg" },
-      { name: "Miniredkovka", filename: "miniredkovka.html", image: "miniredkovka (1).jpg" },
-      { name: "Minihorčica", filename: "minihorcica.html", image: "minihorcica (1).jpg" },
-      { name: "Minibrokolica", filename: "minibrokolica.html", image: "minibrokolica (1).jpg" },
-      { name: "Minikaleráb", filename: "minikalerab.html", image: "minikalerab (1).jpg" },
-      { name: "Minikópor", filename: "minikopor.html", image: "minikopor (1).jpg" },
-      { name: "Minikoriander", filename: "minikoriander.html", image: "minikoriander (1).jpg" }
+      { name: "Minihrášok", id: "minihrasok", image: "minihrasok (1).jpg" },
+      { name: "Minislnečnica", id: "minislnecnica", image: "minislnecnica (1).jpg" },
+      { name: "Miniredkovka", id: "miniredkovka", image: "miniredkovka (1).jpg" },
+      { name: "Minihorčica", id: "minihorcica", image: "minihorcica (1).jpg" },
+      { name: "Minibrokolica", id: "minibrokolica", image: "minibrokolica (1).jpg" },
+      { name: "Minikaleráb", id: "minikalerab", image: "minikalerab (1).jpg" },
+      { name: "Minikópor", id: "minikopor", image: "minikopor (1).jpg" },
+      { name: "Minikoriander", id: "minikoriander", image: "minikoriander (1).jpg" }
     ];
   }
 
   render() {
-    const currentPage = window.location.pathname.split('/').pop() || '';
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentProduct = urlParams.get('product') || '';
     
     const sidebar = document.createElement('aside');
     sidebar.className = 'sidebar';
     
     const navItems = this.products.map(product => {
-      const isActive = currentPage === product.filename;
+      const isActive = currentProduct === product.id;
       return `
         <li${isActive ? ' class="active"' : ''}>
-          <a href="${product.filename}" data-product="${product.filename.replace('.html', '')}">
+          <a href="product-template.html?product=${product.id}" data-product="${product.id}">
             <img src="../../sources/main_prod/${product.image}" alt="${product.name}" />
             <span>${product.name}</span>
             <i class="fas fa-chevron-right"></i>
@@ -453,6 +500,14 @@ function initializeProductSidebar() {
 }
 
 function initializeSocialFeeds() {
+  // Don't add social feeds on product pages or blog pages
+  if (window.location.pathname.includes('/produkty/') || 
+      window.location.pathname.includes('product-template') ||
+      window.location.pathname.includes('blog.html') ||
+      window.location.pathname.includes('blog-template')) {
+    return;
+  }
+  
   // Add social feeds section before footer
   const footerContainer = document.getElementById('footer-container');
   

@@ -60,7 +60,9 @@
 
 .fb-page,
 .fb-page span,
-.fb-page iframe {
+.fb-page iframe,
+.fb-page > span,
+.fb-page iframe[src*="facebook"] {
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -76,6 +78,81 @@
     width: 100% !important;
     max-width: 100% !important;
     min-width: 100% !important;
+}
+
+/* Facebook Fallback Design */
+.facebook-fallback {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.facebook-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.fb-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.facebook-header h4 {
+    margin: 0;
+    color: #1877F2;
+    font-size: 1.2rem;
+}
+
+.facebook-header p {
+    margin: 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.follow-btn {
+    margin-left: auto;
+    background: #1877F2;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.follow-btn:hover {
+    background: #166FE5;
+    color: white;
+}
+
+.facebook-cta {
+    margin-top: auto;
+}
+
+.view-facebook-btn {
+    display: block;
+    text-align: center;
+    background: #1877F2;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.view-facebook-btn:hover {
+    background: #166FE5;
+    color: white;
 }
 
 /* Override any Facebook inline width styles */

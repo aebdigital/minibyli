@@ -44,6 +44,18 @@ function initializeAnimations() {
                 duration: 0.8,
                 ease: 'power2.out'
             }, '-=0.5');
+
+        // Parallax effect for hero background
+        gsap.to('.hero::before', {
+            yPercent: -10,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: '.hero',
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: true
+            }
+        });
     }
 
     // Mini hero animations (for subpages)
@@ -77,22 +89,7 @@ function initializeAnimations() {
         });
     }
 
-    // Blog cards animation
-    if (document.querySelectorAll('.blog-card').length > 0) {
-        gsap.from('.blog-card', {
-            opacity: 0,
-            y: 60,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power2.out',
-            scrollTrigger: {
-                trigger: '.blog-grid',
-                start: 'top 80%',
-                end: 'bottom 20%',
-                toggleActions: 'play none none reverse'
-            }
-        });
-    }
+    // Blog cards animation - removed due to layout issues
 
     // About page content animation
     if (document.querySelector('.about-content-wrapper')) {

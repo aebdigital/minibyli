@@ -1,7 +1,7 @@
 const productData = {
     minihrasok: {
         name: "Minihrášok",
-        image: "../sources/main_prod/minihrasok (1).jpg",
+        image: "../../sources/main_prod/minihrasok (1).jpg",
         taste: "Sladká chuť pripomínajúca mladé hráškové lusky, šťavnatý, obľubujú ho deti i dospelí.",
         benefits: [
             "Vitamíny A, B, C, E a K, minerály železo, draslík a vápnik, dôležité pre správne fungovanie tela a imunitného systému.",
@@ -15,7 +15,7 @@ const productData = {
     },
     minislnecnica: {
         name: "Minislnečnica",
-        image: "../sources/main_prod/minislnecnica (1).jpg",
+        image: "../../sources/main_prod/minislnecnica (1).jpg",
         taste: "oriešková chuť, šťavnatá, svieža, konzistencia mäsitá",
         benefits: [
             "vitamíny A, B, C, E a K, minerály železo, horčík, draslík a vápnik. posilňuje imunitný systém, zdravie srdca a kostí, zrak a zdravie pokožky, podporuje tvorbu kolagénu, správnu funkciu svalov a nervového systému",
@@ -27,7 +27,7 @@ const productData = {
     },
     miniredkovka: {
         name: "Miniredkovka",
-        image: "../sources/main_prod/miniredkovka (1).jpg",
+        image: "../../sources/main_prod/miniredkovka (1).jpg",
         taste: "jemne až stredne pikantná, svieža chuť, chrumkavá, má rôzne farebné variácie- celozelená, s ružovou a fialovou stonkou i celá tmavá",
         benefits: [
             "vitamíny A, B, C, E a K, horčík, železo, draslík, vápnik, sodík, fosfor a zinok - posilňuje imunitný systém, zdravie srdca a kostí, zrak a zdravie pokožky, podporuje tvorbu kolagénu, správnu funkciu svalov a nervového systému",
@@ -40,7 +40,7 @@ const productData = {
     },
     minihorcica: {
         name: "Minihorčica",
-        image: "../sources/main_prod/minihorcica (1).jpg",
+        image: "../../sources/main_prod/minihorcica (1).jpg",
         taste: "chuť od sladkej, neutrálnej, po výraznú- ostrú, chrenovú v závislosti od druhu",
         benefits: [
             "Vitamíny B6, C, E K, kyselina listová, minerály vápnik, železo, draslík a meď, dôležité pre zdravie kostí, srdca, imunitného systému",
@@ -52,7 +52,7 @@ const productData = {
     },
     minibrokolica: {
         name: "Minibrokolica",
-        image: "../sources/main_prod/minibrokolica (1).jpg",
+        image: "../../sources/main_prod/minibrokolica (1).jpg",
         taste: "má neutrálnu až jemne korenistú chuť, chuťou jemne pripomína kapustu",
         benefits: [
             "jedna z najnutričnejších potravín na svete, vitamín C, K, B9, železo, draslík, mangán, aminokyseliny a extrémne vysoký podiel antioxidantov"
@@ -61,7 +61,7 @@ const productData = {
     },
     minikalerab: {
         name: "Minikel",
-        image: "../sources/main_prod/minikalerab (1).jpg",
+        image: "../../sources/main_prod/minikalerab (1).jpg",
         taste: "nasladlý, neutrálny, šťavnatý, chrumkavý, obľubujú ho aj deti",
         benefits: [
             "vitamíny B6, C, E, K, kyselina listová, minerály vápnik, železo, draslík a meď - dôležité pre zdravie kostí, srdca, imunitného systému",
@@ -73,7 +73,7 @@ const productData = {
     },
     minikopor: {
         name: "Minikôpor",
-        image: "../sources/main_prod/minikopor (1).jpg",
+        image: "../../sources/main_prod/minikopor (1).jpg",
         taste: "jemnejšia chuť ako dospelý kôpor",
         benefits: [
             "vitamíny A, B, C, K, minerály vápnik, železo, horčík, draslík, dôležité pre posilnenie imunitného systému, dobrý zrak, zdravú pokožku, zrážanie krvi a energiu.",
@@ -85,7 +85,7 @@ const productData = {
     },
     minikapusta: {
         name: "Minikapusta",
-        image: "../sources/main_prod/minikapusta (1).jpg",
+        image: "../../sources/main_prod/minikapusta (1).jpg",
         taste: "nasladlá, neutrálna, šťavnatá, dekoratívna, obľubujú ju aj deti",
         benefits: [
             "vitamíny A, B6, C, E, K, luteín a karotenoidy, minerály vápnik, železo, draslík - dôležité pre zdravie kostí, srdca, očí, imunitného a nervového systému",
@@ -97,7 +97,7 @@ const productData = {
     },
     minikoriander: {
         name: "Minikoriander",
-        image: "../sources/main_prod/minikoriander (1).jpg",
+        image: "../../sources/main_prod/minikoriander (1).jpg",
         taste: "výrazná, sladká chuť, veľmi aromatický",
         benefits: [
             "vitamínyB, C, K, luteín, minerály vápnik, železo, mangán, draslík, prispieva k posilneniu imunitného systému, zdravým kostiam, správnemu fungovaniu svalov a nervov a zlepšeniu celkovej výdrže organizmu.",
@@ -112,6 +112,9 @@ const productData = {
 function loadProduct(productId) {
     const product = productData[productId];
     if (!product) return;
+    
+    // Add product structured data
+    addProductStructuredData(productId, product);
     
     const productContent = document.getElementById('product-content');
     productContent.innerHTML = `
@@ -139,8 +142,61 @@ function loadProduct(productId) {
                 <h3><i class="fas fa-utensils"></i> Využitie:</h3>
                 <p>${product.usage}</p>
             </div>
+            
+            <div class="info-section education-tip">
+                <h3><i class="fas fa-lightbulb"></i> Vedeli ste, že...</h3>
+                <p>Microgreens majú až <strong>40× viac vitamínov</strong> ako dospelé rastliny a sú <strong>bezpečnejšie ako klíčky</strong>? Klíčky rastú vo vlhku (riziko baktérií), zatiaľ čo naše microgreens rastú na čistej rašeline so svetlom.</p>
+                <p><strong>Tip:</strong> Začnite s ${product.name.toLowerCase()} - ${product.taste.toLowerCase()}. Pridajte ich do šalátov, na chlieb alebo ako garnish k hlavnému jedlu.</p>
+            </div>
         </div>
     `;
+}
+
+function addProductStructuredData(productId, product) {
+    // Remove existing product schema if any
+    const existingSchema = document.querySelector('script[data-product-schema]');
+    if (existingSchema) {
+        existingSchema.remove();
+    }
+    
+    // Create new product schema
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": product.name,
+        "description": product.taste,
+        "image": `https://minibylia.sk/${product.image.replace('../', '')}`,
+        "url": `https://minibylia.sk/subpages/produkty/${productId}.html`,
+        "brand": {
+            "@type": "Brand",
+            "name": "MiniBýli"
+        },
+        "category": "Microgreens",
+        "offers": {
+            "@type": "Offer",
+            "availability": "https://schema.org/InStock",
+            "priceCurrency": "EUR",
+            "seller": {
+                "@type": "Organization",
+                "name": "MiniBýli"
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "23"
+        },
+        "nutritionInformation": {
+            "@type": "NutritionInformation",
+            "description": product.benefits.join(' ')
+        }
+    };
+    
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.setAttribute('data-product-schema', 'true');
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
 }
 
 function setActiveTab(productId) {

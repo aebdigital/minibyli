@@ -6,10 +6,11 @@
 
 .blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 40px;
-    max-width: 1200px;
+    width: 90%;
     margin: 0 auto;
+    max-width: 1200px;
 }
 
 .blog-card {
@@ -109,6 +110,7 @@
     color: #666;
     line-height: 1.6;
     margin-bottom: 20px;
+    font-size: 1.1rem;
 }
 
 .read-more {
@@ -231,7 +233,7 @@
 }
 
 .blog-post-content {
-    max-width: 800px;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -272,6 +274,7 @@
 
 .post-text p {
     margin-bottom: 20px;
+    font-size: 1.1rem;
 }
 
 .post-text ul {
@@ -496,12 +499,22 @@ cite {
 
 /* Mobile responsive */
 @media (max-width: 768px) {
-    .newsletter-form {
-        flex-direction: column;
+    .blog-content {
+        padding: 60px 0;
     }
     
     .blog-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+    }
+    
+    .newsletter-content h2 {
+        font-size: 2rem;
     }
     
     .supplies-grid {
@@ -513,9 +526,67 @@ cite {
         text-align: center;
     }
     
+    .blog-post {
+        padding: 20px 0 60px;
+    }
+    
     .blog-post-header {
         flex-direction: column;
         gap: 20px;
         align-items: flex-start;
+    }
+    
+    .blog-post-header .blog-meta {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .featured-image {
+        margin-bottom: 30px;
+    }
+    
+    .featured-image img {
+        height: 250px;
+    }
+    
+    .lead {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+    
+    .post-text h2 {
+        font-size: 1.5rem;
+    }
+    
+    .tip-box, .success-tips, .problem-solution {
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    .share-buttons {
+        text-align: center;
+    }
+    
+    .related-post {
+        gap: 12px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .blog-card h2 {
+        font-size: 1.2rem;
+    }
+    
+    .newsletter-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .lead {
+        font-size: 1.1rem;
     }
 }
