@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Produkt - MiniBýli</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../../sources/favicon-32x32.png">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- GSAP Core -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- GSAP ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+</head>
+<body>
+    <div id="header-container"></div>
+    
+    <main>
+        <section class="mini-hero">
+            <div class="mini-hero-content">
+                <h1 id="hero-title">Načítava sa...</h1>
+                <p id="hero-subtitle">Načítava sa popis produktu...</p>
+            </div>
+        </section>
+        
+        <div class="product-detail-container">
+            <div id="sidebar-container"></div>
+            
+            <section class="product-detail" id="product-content">
+                <div class="loading">
+                    <p>Načítava sa produkt...</p>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <div id="footer-container"></div>
+    
+    <script src="../../js/components.js"></script>
+    <script src="../../js/products.js"></script>
+    <script src="../../js/animations.js"></script>
+    <script>
+        // Get product ID from URL path or query parameter
+        function getProductId() {
+            const path = window.location.pathname;
+            const segments = path.split('/');
+            const filename = segments[segments.length - 1];
+            
+            if (filename === 'product-template.html') {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get('product');
+            }
+            
+            // Extract product ID from filename (e.g., minihrasok.html -> minihrasok)
+            return filename.replace('.html', '');
+        }
+
+        // Load product data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const productId = getProductId();
+            if (productId && productData[productId]) {
+                const product = productData[productId];
+                
+                // Update page title
+                document.getElementById('page-title').textContent = `${product.name} - MiniBýli`;
+                document.getElementById('hero-title').textContent = product.name;
+                document.getElementById('hero-subtitle').textContent = product.taste;
+                
+                // Load product content
+                loadProduct(productId);
+            } else {
+                document.getElementById('product-content').innerHTML = '<p>Produkt sa nenašiel.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
