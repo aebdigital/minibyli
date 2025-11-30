@@ -188,7 +188,12 @@
 @media (max-width: 768px) {
     .hero {
         height: 60vh;
-        padding: 0 10px;
+        padding: 0;
+    }
+    
+    .hero-content {
+        width: 90vw;
+        padding: 0;
     }
     
     .hero h1 {
@@ -203,9 +208,29 @@
     }
     
     .product-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 0 10px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 0;
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .product-card {
+        margin-bottom: 0;
+    }
+    
+    .product-card h3 {
+        font-size: 1.3rem;
+        padding: 15px 10px;
+    }
+    
+    .product-btn {
+        display: none;
+    }
+    
+    .product-image {
+        height: auto;
+        aspect-ratio: 1 / 1;
     }
     
     .microgreens-info {

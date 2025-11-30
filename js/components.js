@@ -269,9 +269,11 @@ function initializeMobileMenu() {
     if (isActive) {
       navLinks.classList.remove('active');
       menuIcon.className = 'fas fa-bars';
+      removeMobileMenuHeader();
     } else {
       navLinks.classList.add('active');
       menuIcon.className = 'fas fa-times';
+      addMobileMenuHeader();
     }
   });
   
@@ -280,16 +282,61 @@ function initializeMobileMenu() {
     link.addEventListener('click', () => {
       navLinks.classList.remove('active');
       menuIcon.className = 'fas fa-bars';
+      removeMobileMenuHeader();
     });
   });
   
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
-    if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+    if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target) && !e.target.closest('.mobile-menu-header')) {
       navLinks.classList.remove('active');
       menuIcon.className = 'fas fa-bars';
+      removeMobileMenuHeader();
     }
   });
+  
+  function addMobileMenuHeader() {
+    if (navLinks.querySelector('.mobile-menu-header')) return;
+    
+    const pathname = window.location.pathname;
+    const isInSubpages = pathname.includes('/subpages/');
+    const isInProducty = pathname.includes('/subpages/produkty/');
+    
+    let pathPrefix = '';
+    if (isInProducty) {
+      pathPrefix = '../../';
+    } else if (isInSubpages) {
+      pathPrefix = '../';
+    }
+    
+    const mobileHeader = document.createElement('div');
+    mobileHeader.className = 'mobile-menu-header';
+    mobileHeader.innerHTML = `
+      <a href="${pathPrefix}index.html" class="mobile-logo-link">
+        <img src="${pathPrefix}logo.svg" alt="MiniBýli" class="mobile-logo" />
+      </a>
+      <button class="mobile-close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+    `;
+    
+    navLinks.prepend(mobileHeader);
+    
+    // Add click handler for close button
+    const closeBtn = mobileHeader.querySelector('.mobile-close-btn');
+    closeBtn.addEventListener('click', () => {
+      navLinks.classList.remove('active');
+      menuIcon.className = 'fas fa-bars';
+      removeMobileMenuHeader();
+    });
+  }
+  
+  function removeMobileMenuHeader() {
+    const existingHeader = navLinks.querySelector('.mobile-menu-header');
+    if (existingHeader) {
+      existingHeader.remove();
+    }
+  }
 }
 
 class SocialFeedSection {
@@ -299,6 +346,17 @@ class SocialFeedSection {
 
   render() {
     // Show on all pages including homepage
+    const pathname = window.location.pathname;
+    const isInSubpages = pathname.includes('/subpages/');
+    const isInProducty = pathname.includes('/subpages/produkty/');
+    
+    // Determine path depth for images
+    let pathPrefix = '';
+    if (isInProducty) {
+      pathPrefix = '../../';
+    } else if (isInSubpages) {
+      pathPrefix = '../';
+    }
 
     const section = document.createElement('section');
     section.className = 'social-feeds-section';
@@ -312,14 +370,17 @@ class SocialFeedSection {
             <div class="feed-embed">
               <div class="facebook-fallback">
                 <div class="facebook-header">
-                  <img src="https://scontent.xx.fbcdn.net/v/t39.30808-1/307513196_484663480338833_8376859459327943214_n.jpg" alt="MiniBýli" class="fb-avatar">
+                  <img src="${pathPrefix}sources/fbprof.jpg" alt="MiniBýli" class="fb-avatar">
                   <div>
-                    <h4>MiniBýli</h4>
-                    <p>342 sledovatelia</p>
+                    <h4>MiniByli</h4>
+                    <p>342 followers</p>
                   </div>
                   <a href="https://www.facebook.com/minibyli" target="_blank" class="follow-btn">
                     <i class="fab fa-facebook"></i> Sledovať
                   </a>
+                </div>
+                <div class="facebook-image">
+                  <img src="${pathPrefix}sources/screen.png" alt="MiniByli Facebook" class="facebook-screen">
                 </div>
                 <div class="facebook-cta">
                   <a href="https://www.facebook.com/minibyli" target="_blank" class="view-facebook-btn">

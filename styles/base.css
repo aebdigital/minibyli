@@ -51,3 +51,15 @@ p {
 .cta-button:hover {
     background-color: #B8941F;
 }
+
+/* Mobile responsive containers */
+@media (max-width: 768px) {
+    .container {
+        width: 90vw;
+        padding: 0;
+    }
+    
+    .container > * {
+        width: 100%;
+    }
+}

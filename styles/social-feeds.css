@@ -118,6 +118,23 @@
     font-size: 0.9rem;
 }
 
+.facebook-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 20px 0;
+}
+
+.facebook-screen {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
 .follow-btn {
     margin-left: auto;
     background: #1877F2;
@@ -231,7 +248,7 @@
     .social-feeds-grid {
         flex-direction: column;
         gap: 40px;
-        padding: 0 20px;
+        padding: 0;
     }
     
     .social-feed {
@@ -273,7 +290,7 @@
     }
     
     .social-feeds-grid {
-        padding: 0 15px;
+        padding: 0;
     }
     
     .fb-page {

@@ -157,6 +157,10 @@ footer {
 
 /* Mobile responsive */
 @media (max-width: 768px) {
+    .footer-content {
+        padding: 0;
+    }
+    
     .footer-cta {
         flex-direction: column;
         gap: 30px;
@@ -170,15 +174,15 @@ footer {
     .footer-main {
         grid-template-columns: 1fr;
         gap: 40px;
-        text-align: center;
+        text-align: left;
     }
     
     .footer-contact .contact-item {
-        justify-content: center;
+        justify-content: flex-start;
     }
     
     .footer-nav {
-        align-items: center;
+        align-items: flex-start;
     }
     
     .footer-bottom {

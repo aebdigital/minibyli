@@ -506,7 +506,29 @@ cite {
     .blog-grid {
         grid-template-columns: 1fr;
         gap: 30px;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .blog-card h2 {
+        font-size: 1.8rem;
+    }
+    
+    .blog-content-card p {
+        font-size: 16px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.4;
+        max-height: calc(1.4em * 3);
+    }
+    
+    /* Make all text 16px on mobile */
+    p, span, div {
+        font-size: 16px !important;
     }
     
     .newsletter-form {
